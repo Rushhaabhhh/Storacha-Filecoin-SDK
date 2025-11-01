@@ -2,7 +2,9 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import { config, validateConfig } from "./config/env.js";
 import { initializeSynapse, cleanupSynapse } from "./config/synapse.js";
-import storageRoutes from "./routes/storage.routes.js";
+import storageRoutes from "./routes/storage.routes";
+import uploadRoute from './routes/upload.routes';
+import paymentRoute from './routes/payment.route';
 
 const app = express();
 
@@ -19,6 +21,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 
 // Routes
 app.use("/api/storage", storageRoutes);
+app.use("/api/upload", uploadRoute);
+app.use("/api/payment", paymentRoute);
 
 // Health check
 app.get("/health", (req: Request, res: Response) => {

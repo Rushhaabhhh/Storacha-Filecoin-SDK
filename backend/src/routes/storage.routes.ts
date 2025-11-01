@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from "express";
 import multer from "multer";
-import { StorageService } from "../services/storage.service.js";
+import { StorageService } from "../services/storage.service";
 import { config } from "../config/env.js";
 
 const router: Router = Router();
